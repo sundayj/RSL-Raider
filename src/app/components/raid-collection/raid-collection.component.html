@@ -1,13 +1,16 @@
 <mat-card>
+<!--  Basic Account Info  -->
   <mat-card-title>{{raidCollection.name}}</mat-card-title>
   <mat-card-subtitle fxLayout="row" fxLayoutGap="15px">
     <div><b>Last Updated</b>: {{raidCollection.lastUpdated | date : 'short'}}</div>
     <div><b>Data Version</b>: {{raidCollection.fileVersion}}</div>
   </mat-card-subtitle>
   <mat-card-content fxLayout="row" fxLayoutGap="20px">
+<!--  Shards  -->
     <div fxLayout="column">
       <b>Shards:</b>
       <div *ngFor="let shardType of shardTypes">
+<!--        TODO: Break into component with better formatting-->
         <div style="padding-left: 10px;">
         <span *ngIf="doShardsHaveShardType(shardType)">
           {{shardType}}: {{raidCollection.shards[shardType].count}}
@@ -15,6 +18,7 @@
         </div>
       </div>
     </div>
+<!--    Arena League and Champ Count  -->
     <div fxLayout="column">
       <span><b>Arena League</b>: {{raidCollection.arenaLeague}}</span>
       <span><b>Champ Count</b>: {{raidCollection.heroes.length}}</span>
