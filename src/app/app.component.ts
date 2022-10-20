@@ -22,7 +22,6 @@ export class AppComponent implements OnInit{
     try {
       setInterval(() => {
         this.raidCollection = this._raidToolKitService.accountDump;
-        console.log(this.raidCollection)
         this.loading = false;
       }, 3000)
     } catch(error) {
@@ -36,6 +35,6 @@ export class AppComponent implements OnInit{
     setInterval(() => {
       this.raidCollection = this._raidToolKitService.accountDump;
       this.loading = false;
-    }, 1000)
+    }, 3000)
   }
 }

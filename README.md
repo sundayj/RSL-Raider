@@ -1,27 +1,16 @@
-# RSLRaider
+# RSL Raider - A Raid Collection Viewer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.13.
+> :warning: While this is a web app, the technologies it is dependent on
+> ([Raid-Extractor](https://github.com/raid-toolkit/extractor/releases) and [Raid-Toolkit-SDK](https://github.com/raid-toolkit/raid-toolkit-sdk#installation))
+> run on Windows only. As such, live updates only work if you're using Windows.
+> Once the `JSON` importer is implemented you will be able to upload the `JSON` straight
+> to _RSL Raider_.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+|      Implemented      | RSL Raider<br>Version | Feature               | Description                                                                                                                                                        |
+|:---------------------:|:---------------------:|:----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|  :white_check_mark:   |        0.1.0 +        | Basic Account Info    | - Account Name<br> - Shard Types and Count for Each Type<br> - Count of All Champs<br> - Great Hall Table Showing Current Levels for Each Stat Under Each Affinity |
+|  :white_check_mark:   |        0.1.0 +        | Manual Refresh Button | Allows the user to refresh the account dump.                                                                                                                       |
+| :white_square_button: |                       | Upload Extractor JSON | Allows the user to upload JSON downloaded from the Extractor. Reload Button will actually re-check the JSON file.                                                  |
+| :white_square_button: |                       | Account Champ List    | Display all champs under the current account.                                                                                                                      |

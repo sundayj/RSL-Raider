@@ -32,17 +32,13 @@ export class RaidToolkitService {
   }
 
   async setup(){
-    try {
-      await this.api.getAccounts().then(acc => {
-        this.account = acc[0];
-      }).catch(error => {
-        this._snackBar.open(error, "ERROR");
-        console.error(error);
-      })
-      await this.refresh();
-    } catch (error) {
-
-    }
+    await this.api.getAccounts().then(acc => {
+      this.account = acc[0];
+    }).catch(error => {
+      this._snackBar.open(error, "ERROR");
+      console.error(error);
+    })
+    await this.refresh();
   }
 
   async refresh(){
