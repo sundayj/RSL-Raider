@@ -1,0 +1,48 @@
+<ng-container *ngIf="dataSource !== undefined">
+  <mat-card>
+    <mat-card-title>
+      Great Hall Levels
+    </mat-card-title>
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> Affinity </th>
+          <td mat-cell *matCellDef="let statAttribute"> {{statAttribute?.Name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="attack">
+          <th mat-header-cell *matHeaderCellDef> Attack </th>
+          <td mat-cell *matCellDef="let statAttribute"> {{statAttribute?.attack}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="defense">
+          <th mat-header-cell *matHeaderCellDef> Defense </th>
+          <td mat-cell *matCellDef="let statAttribute"> {{statAttribute?.defense}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="health">
+          <th mat-header-cell *matHeaderCellDef> Health </th>
+          <td mat-cell *matCellDef="let statAttribute"> {{statAttribute?.health}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="accuracy">
+          <th mat-header-cell *matHeaderCellDef> Accuracy </th>
+          <td mat-cell *matCellDef="let statAttribute"> {{statAttribute?.accuracy}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="resistance">
+          <th mat-header-cell *matHeaderCellDef> Resistance </th>
+          <td mat-cell *matCellDef="let statAttribute"> {{statAttribute?.resistance}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="criticalDamage">
+          <th mat-header-cell *matHeaderCellDef> Crit Damage </th>
+          <td mat-cell *matCellDef="let statAttribute"> {{statAttribute?.criticalDamage}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

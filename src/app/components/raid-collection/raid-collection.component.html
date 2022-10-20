@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title>{{raidCollection.name}}</mat-card-title>
+  <mat-card-subtitle fxLayout="row" fxLayoutGap="15px">
+    <div><b>Last Updated</b>: {{raidCollection.lastUpdated | date : 'short'}}</div>
+    <div><b>Data Version</b>: {{raidCollection.fileVersion}}</div>
+  </mat-card-subtitle>
+  <mat-card-content fxLayout="row" fxLayoutGap="20px">
+    <div fxLayout="column">
+      <b>Shards:</b>
+      <div *ngFor="let shardType of shardTypes">
+        <div style="padding-left: 10px;">
+        <span *ngIf="doShardsHaveShardType(shardType)">
+          {{shardType}}: {{raidCollection.shards[shardType].count}}
+        </span>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column">
+      <span><b>Arena League</b>: {{raidCollection.arenaLeague}}</span>
+      <span><b>Champ Count</b>: {{raidCollection.heroes.length}}</span>
+    </div>
+  </mat-card-content>
+</mat-card>
