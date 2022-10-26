@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "appShellDev": "ng run RSLRaider:app-shell:development",
+    "inject": "Injector.exe -n Raid.exe -i C:\\Users\\justi\\StaticRaidExtraction\\x64\\Debug\\IL2CppDLL.dll"
   },
   "private": true,
   "dependencies": {
@@ -20,7 +22,9 @@
     "@angular/material": "^14.2.5",
     "@angular/platform-browser": "~14.2.6",
     "@angular/platform-browser-dynamic": "~14.2.6",
+    "@angular/platform-server": "~14.2.6",
     "@angular/router": "~14.2.6",
+    "@angular/service-worker": "~14.2.6",
     "@ngrx/data": "^14.3.2",
     "@ngrx/effects": "^14.3.2",
     "@ngrx/entity": "^14.3.2",
@@ -29,8 +33,17 @@
     "@ngrx/store-devtools": "^14.3.2",
     "@nrwl/angular": "^15.0.0",
     "@raid-toolkit/webclient": "^1.0.2",
+    "better-sqlite3": "^7.6.2",
+    "cheerio": "^1.0.0-rc.12",
+    "jsonwebtoken": "^8.5.1",
+    "lowdb": "^5.0.3",
+    "node-fetch": "^3.2.10",
+    "octokit": "^2.0.9",
+    "process": "^0.11.10",
     "rxjs": "~7.5.7",
     "tslib": "^2.3.0",
+    "util": "^0.12.5",
+    "ws": "^8.10.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -46,10 +59,16 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.8.4",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "typescript": "~4.8.4"
   },
   "volta": {
-    "node": "16.18.0"
+    "node": "16.17.1"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false,
+    "process": false
   }
 }

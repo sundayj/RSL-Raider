@@ -30,6 +30,9 @@ import {MatTableModule} from '@angular/material/table';
 import {FlexModule} from '@angular/flex-layout';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import {RouterOutlet, RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -45,27 +48,36 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     ArtifactComponent,
     AffinityComponent
   ],
-  imports: [
-    BrowserModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-    EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot(),
-    BrowserAnimationsModule,
-    StoreModule.forRoot(reducers, {metaReducers}),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreModule.forFeature(fromAccountInfo.accountInfoFeatureKey, fromAccountInfo.reducer),
-    StoreModule.forFeature(fromArena.arenasFeatureKey, fromArena.reducer),
-    StoreModule.forFeature(fromArtifacts.artifactsesFeatureKey, fromArtifacts.reducer),
-    StoreModule.forFeature(fromChampions.championsFeatureKey, fromChampions.reducer),
-    MatToolbarModule,
-    MatProgressSpinnerModule,
-    MatCardModule,
-    MatTableModule,
-    FlexModule,
-    MatButtonModule,
-    MatSnackBarModule
-  ],
+    imports: [
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        StoreModule.forRoot({}, {}),
+        StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+        EffectsModule.forRoot([]),
+        StoreRouterConnectingModule.forRoot(),
+        BrowserAnimationsModule,
+        StoreModule.forRoot(reducers, {metaReducers}),
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
+        StoreModule.forFeature(fromAccountInfo.accountInfoFeatureKey, fromAccountInfo.reducer),
+        StoreModule.forFeature(fromArena.arenasFeatureKey, fromArena.reducer),
+        StoreModule.forFeature(fromArtifacts.artifactsesFeatureKey, fromArtifacts.reducer),
+        StoreModule.forFeature(fromChampions.championsFeatureKey, fromChampions.reducer),
+        MatToolbarModule,
+        MatProgressSpinnerModule,
+        MatCardModule,
+        MatTableModule,
+        FlexModule,
+        MatButtonModule,
+        MatSnackBarModule,
+        MatProgressBarModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+        RouterOutlet,
+        RouterModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
