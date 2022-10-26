@@ -1,1 +1,15 @@
-<p>faction-guardians works!</p>
+<mat-card>
+  <mat-card-title>Faction Guardian Overview</mat-card-title>
+  <mat-card-content>
+    <ng-container *ngFor="let factionGroup of factionsByFactionGroup">
+      <mat-card>
+        <mat-card-title>{{factionGroup.factionGroup.Name}}</mat-card-title>
+        <mat-card-content>
+          <ng-container *ngFor="let faction of factionGroup.factions">
+            <div><b>{{faction.Name}}</b></div>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </mat-card-content>
+</mat-card>
