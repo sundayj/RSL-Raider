@@ -1,10 +1,4 @@
 <mat-card>
-<!--  Basic Account Info  -->
-  <mat-card-title>{{raidCollection.name}}</mat-card-title>
-  <mat-card-subtitle fxLayout="row" fxLayoutGap="15px">
-    <div><b>Last Updated</b>: {{raidCollection.lastUpdated | date : 'short'}}</div>
-    <div><b>Data Version</b>: {{raidCollection.fileVersion}}</div>
-  </mat-card-subtitle>
   <mat-card-content fxLayout="row" fxLayoutGap="20px">
 <!--  Shards  -->
     <div fxLayout="column">
@@ -13,7 +7,7 @@
 <!--        TODO: Break into component with better formatting-->
         <div style="padding-left: 10px;">
         <span *ngIf="doShardsHaveShardType(shardType)">
-          {{shardType}}: {{raidCollection.shards[shardType].count}}
+          {{shardType == "Legendary" ? "Sacred" : shardType}}: {{raidCollection.shards[shardType].count}}
         </span>
         </div>
       </div>

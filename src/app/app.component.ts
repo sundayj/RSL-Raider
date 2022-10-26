@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RaidToolkitService} from './services/raid-toolkit/raid-toolkit.service';
 import {RaidCollection} from './store/models/RaidCollection/raid-collection.model';
 import {INIT_GREAT_HALL} from './store/models/RaidCollection/great-hall.model';
+import {INIT_FACTION_GUARDIANS} from './store/models/RaidCollection/faction-guardians.model';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent implements OnInit{
   loading = true;
   raidCollection: RaidCollection | undefined;
   initGreatHall = INIT_GREAT_HALL;
+  initFactionGuardians = INIT_FACTION_GUARDIANS;
 
   constructor(private _raidToolKitService: RaidToolkitService) {
   }

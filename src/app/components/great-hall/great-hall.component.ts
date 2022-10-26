@@ -22,6 +22,7 @@ export class GreatHallComponent implements OnInit, OnChanges {
     }
     this.dataSource = affinities;
   }
+
   displayedColumns: string[] = [
     "Name",
     StatKindId.Attack.toLowerCase(),
