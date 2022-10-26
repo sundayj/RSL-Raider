@@ -3,8 +3,10 @@
 In order to develop this app you will need to install the latest release of
 [Raid-Toolkit-SDK](https://github.com/raid-toolkit/raid-toolkit-sdk#installation).
 The Raid-Toolkit server *MUST* be running in order to populate the app with data.
-Once the app supports uploading the `JSON` returned from the [Raid-Extractor](https://github.com/raid-toolkit/extractor/releases),
-you will be able to utilize a stored `JSON` file for development.
+
+> :warning::construction::warning:<br>
+> **TODO**: Once the app supports uploading the `JSON` returned from the [Raid-Extractor](https://github.com/raid-toolkit/extractor/releases),
+> you will be able to utilize a stored `JSON` file for development.
 
 ## Dependencies
 - Windows 10 or higher
@@ -18,6 +20,17 @@ you will be able to utilize a stored `JSON` file for development.
   - [NGRX Entity](https://ngrx.io/guide/entity)
   - [NGRX Router-Store](https://ngrx.io/guide/router-store)
   - [NGRX Schematics](https://ngrx.io/guide/schematics) - For scaffolding NGRX specific components and services
+
+
+## Utilities
+Some useful development utilities have been added to the `./utilities` folder. More details can be found in that folder's specific `README.md` as needs arise.
+- `utilities/get-or-update-champ-links.js`
+  - Scrapes Ayumi Love's Raid Shadow Legends index page for champion names and the corresponding links to their details within their site.
+  - Stores the results in `utilities/champ-links.json`.
+- `utilities/get-champ-data.js` :construction: WIP :construction:
+  - Will attempt to scrape the data from the links in `utilities/champ-links.json`, then store that data in a database (or an equivalent).
+  - Will only scrape links for champs that don't exist in the database.
+  - :construction: **TODO**: Needs a flag added to the links json that marks the champ as already scraped, in need of an update, or whether the champs still needs its initial scrape.
 
 ## Development server
 

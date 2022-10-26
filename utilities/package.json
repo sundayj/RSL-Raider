@@ -1,0 +1,17 @@
+{
+  "name": "utilities",
+  "version": "1.0.0",
+  "description": "Utilities for RSL Raider",
+  "exports": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scrapeLinks": "node get-or-update-champ-links.js",
+    "scrapeChamps": "node get-champ-data.js"
+  },
+  "author": "Justin Sunday",
+  "license": "ISC",
+  "type": "module",
+  "engines": {
+    "node": ">=14.16"
+  }
+}
