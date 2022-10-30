@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
 
   loading = true;
   raidCollection: RaidCollection | undefined;
+  allResources: any | undefined;
   initGreatHall = INIT_GREAT_HALL;
   initFactionGuardians = INIT_FACTION_GUARDIANS;
 
@@ -22,21 +23,25 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     try {
-      setInterval(() => {
-        this.raidCollection = this._raidToolKitService.accountDump;
-        this.loading = false;
-      }, 3000)
+      this.refreshData(false);
     } catch(error) {
       console.error(error);
     }
   }
 
-  async refreshData() {
+  async refreshData(isLoaded: boolean = false) {
     this.loading = true
     await this._raidToolKitService.refresh();
-    setInterval(() => {
+    let loaded: boolean = isLoaded;
+    setInterval((isLoaded: boolean = loaded) => {
+      if (isLoaded){return;}
       this.raidCollection = this._raidToolKitService.accountDump;
+      this.allResources = this._raidToolKitService.resources;
       this.loading = false;
-    }, 3000)
+      loaded = true;
+    }, 3000, loaded)
+
+    console.info(this.allResources);
+
   }
 }

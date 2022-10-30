@@ -1,1 +1,22 @@
-<p>faction-guardians works!</p>
+<mat-card>
+  <mat-card-title fxLayoutAlign="center">
+    Faction Guardian Overview
+  </mat-card-title>
+  <mat-card-content fxLayout="column">
+    <ng-container *ngFor="let factionGroup of factionsByFactionGroup">
+      <mat-card *ngIf="factionGroup.factions.length > 0">
+        <mat-card-title>{{factionGroup.factionGroup.Name}}</mat-card-title>
+        <mat-card-content fxLayout="row" fxLayoutAlign="space-evenly">
+          <ng-container *ngFor="let faction of factionGroup.factions">
+            <div fxLayout="column"  *ngIf="checkGuardiansExist(faction.RTK_Name)">
+              <span><b>{{faction.Name}}</b></span>
+              <ng-container *ngFor="let fG of getFactionGuardiansForFaction(faction.RTK_Name) | keyvalue">
+                <div style="padding-left: 15px;"><b>{{fG.key}}</b>: {{fG.value}}</div>
+              </ng-container>
+            </div>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </mat-card-content>
+</mat-card>

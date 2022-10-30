@@ -33,6 +33,8 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {RouterOutlet, RouterModule} from '@angular/router';
+import { ChampCollectionComponent } from './components/champ-collection/champ-collection.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import {RouterOutlet, RouterModule} from '@angular/router';
     FactionGuardiansComponent,
     BonusComponent,
     ArtifactComponent,
-    AffinityComponent
+    AffinityComponent,
+    ChampCollectionComponent,
+    InventoryComponent
   ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),

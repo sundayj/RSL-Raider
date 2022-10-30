@@ -11,28 +11,36 @@ export class RaidToolkitService {
   get accountDump(): AccountDump {
     return this._accountDump ?? {};
   }
-
   set accountDump(value: AccountDump) {
     this._accountDump = value;
   }
+
   get account(): AccountInfo {
     return <AccountInfo>this._account;
   }
-
   set account(value: AccountInfo) {
     this._account = value;
   }
 
-  api: IAccountApi = useRaidToolkitApi(IAccountApi);
+  get resources(){
+    return this._allResources;
+  }
+  set resources(value){
+    this._allResources = value;
+  }
+
+  accountApi: IAccountApi = useRaidToolkitApi(IAccountApi);
+
   private _account: AccountInfo | unknown;
   private _accountDump: AccountDump = InitRaidCollection;
+  private _allResources: any | undefined;
 
   constructor(private _snackBar: MatSnackBar) {
     this.setup();
   }
 
   async setup(){
-    await this.api.getAccounts().then(acc => {
+    await this.accountApi.getAccounts().then(acc => {
       this.account = acc[0];
     }).catch(error => {
       this._snackBar.open(error, "ERROR");
@@ -43,6 +51,7 @@ export class RaidToolkitService {
 
   async refresh(){
     if (!this.account?.id){ return;}
-    this.accountDump = (await this.api.getAccountDump(this.account.id)) as RaidCollection;
+    this.accountDump = (await this.accountApi.getAccountDump(this.account.id)) as RaidCollection;
+    this.resources = (await this.accountApi.getAllResources(this.account.id));
   }
 }
