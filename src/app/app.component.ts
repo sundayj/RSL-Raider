@@ -15,8 +15,7 @@ export class AppComponent implements OnInit{
   loading = true;
   raidCollection: RaidCollection | undefined;
   allResources: any | undefined;
-  initGreatHall = INIT_GREAT_HALL;
-  initFactionGuardians = INIT_FACTION_GUARDIANS;
+
 
   constructor(private _raidToolKitService: RaidToolkitService) {
   }

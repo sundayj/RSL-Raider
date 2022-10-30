@@ -1,21 +1,18 @@
 <mat-card>
-  <mat-card-content fxLayout="row" fxLayoutGap="20px">
-<!--  Shards  -->
-    <div fxLayout="column">
-      <b>Shards:</b>
-      <div *ngFor="let shardType of shardTypes">
-<!--        TODO: Break into component with better formatting-->
-        <div style="padding-left: 10px;">
-        <span *ngIf="doShardsHaveShardType(shardType)">
-          {{shardType == "Legendary" ? "Sacred" : shardType}}: {{raidCollection.shards[shardType].count}}
-        </span>
-        </div>
-      </div>
-    </div>
-<!--    Arena League and Champ Count  -->
-    <div fxLayout="column">
-      <span><b>Arena League</b>: {{raidCollection.arenaLeague}}</span>
-      <span><b>Champ Count</b>: {{raidCollection.heroes.length}}</span>
-    </div>
+  <mat-card-content>
+<!--  User's InventoryEnum/Resources  -->
+    <app-inventory
+      [allResources]="allResources"
+      [arenaLeague]="raidCollection.arenaLeague"
+      [heroCount]="raidCollection.heroes.length"
+    ></app-inventory>
+<!--    User's Great Hall Overview  -->
+    <ng-container *ngIf="raidCollection.greatHall !== initGreatHall">
+      <app-great-hall [greatHall]="raidCollection.greatHall"></app-great-hall>
+    </ng-container>
+<!--    User's Faction Guardian Overview  -->
+    <ng-container *ngIf="raidCollection.factionGuardians !== initFactionGuardians">
+      <app-faction-guardians [factionGuardians]="raidCollection.factionGuardians"></app-faction-guardians>
+    </ng-container>
   </mat-card-content>
 </mat-card>

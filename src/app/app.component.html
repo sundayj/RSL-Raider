@@ -16,13 +16,10 @@
 </mat-toolbar>
 
 <div *ngIf="loading === false && raidCollection !== undefined">
-  <app-raid-collection [raidCollection]="raidCollection"></app-raid-collection>
-  <ng-container *ngIf="raidCollection.greatHall !== initGreatHall">
-    <app-great-hall [greatHall]="raidCollection.greatHall"></app-great-hall>
-  </ng-container>
-  <ng-container *ngIf="raidCollection.factionGuardians !== initFactionGuardians">
-    <app-faction-guardians [factionGuardians]="raidCollection.factionGuardians"></app-faction-guardians>
-  </ng-container>
+  <app-raid-collection
+    [raidCollection]="raidCollection"
+    [allResources]="allResources"
+  ></app-raid-collection>
 </div>
 
 <div *ngIf="loading === true">

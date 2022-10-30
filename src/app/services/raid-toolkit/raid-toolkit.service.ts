@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AccountDump} from '../../store/models/RaidCollection/account-dump.model';
 import {AccountInfo, IAccountApi, useRaidToolkitApi} from '@raid-toolkit/webclient';
-import {InitRaidCollection, RaidCollection} from '../../store/models/RaidCollection/raid-collection.model';
+import {INIT_RAID_COLLECTION, RaidCollection} from '../../store/models/RaidCollection/raid-collection.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({
@@ -32,7 +32,7 @@ export class RaidToolkitService {
   accountApi: IAccountApi = useRaidToolkitApi(IAccountApi);
 
   private _account: AccountInfo | unknown;
-  private _accountDump: AccountDump = InitRaidCollection;
+  private _accountDump: AccountDump = INIT_RAID_COLLECTION;
   private _allResources: any | undefined;
 
   constructor(private _snackBar: MatSnackBar) {

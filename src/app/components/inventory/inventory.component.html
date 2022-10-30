@@ -1,0 +1,115 @@
+<mat-card>
+  <mat-card-title fxLayoutAlign="center">
+    Inventory
+  </mat-card-title>
+  <div fxLayout="row" fxLayoutGap="20px">
+    <!--  Main Resources  -->
+    <div fxLayout="column">
+      <span><b>Champ Count</b>: {{heroCount | number}}</span>
+      <span><b>Energy</b>: {{allResources.basic[basicInventoryEnum.Energy] | number}}</span>
+      <span><b>Auto Battles</b>: {{allResources.basic[basicInventoryEnum.AutoBattleTicket] | number}}</span>
+      <span><b>Gems</b>: {{allResources.basic[basicInventoryEnum.Gem] | number}}</span>
+      <span><b>Silver</b>: {{allResources.basic[basicInventoryEnum.Silver] | number}}</span>
+    </div>
+    <!--  Shards  -->
+    <div fxLayout="column">
+      <span><b>Shards</b>:</span>
+      <div *ngFor="let shardType of shardTypes">
+        <div style="padding-left: 10px;">
+            <span>
+              {{shardType == "Legendary" ? "Sacred" : shardType}}: {{allResources.shards[shardType] ? (allResources.shards[shardType] | number) : 0}}
+            </span>
+        </div>
+      </div>
+    </div>
+    <!--  Arena -->
+    <div fxLayout="column">
+      <span><b>Arena</b>:</span>
+      <div style="padding-left: 10px;">
+        <span>1v1 League: {{arenaLeague}}</span>
+      </div>
+      <div style="padding-left: 10px;">
+        <span>Tag Arena Gold: {{allResources.basic[basicInventoryEnum.Arena3X3ShopCurrency] | number}}</span>
+      </div>
+      <div style="padding-left: 10px;">
+        <span>Tag Arena Tokens: {{allResources.basic[basicInventoryEnum.Arena3x3Token]}}</span>
+      </div>
+    </div>
+<!--    Great Hall Medals -->
+    <div fxLayout="column">
+      <span><b>Great Hall Medals</b>:</span>
+      <div style="padding-left: 10px;">
+        <span>Bronze: {{allResources.basic[basicInventoryEnum.MedalL_Bronze] ?? 0}}</span>
+      </div>
+      <div style="padding-left: 10px;">
+        <span>Silver: {{allResources.basic[basicInventoryEnum.Medal_Silver] ?? 0}}</span>
+      </div>
+      <div style="padding-left: 10px;">
+        <span>Gold: {{allResources.basic[basicInventoryEnum.Medal_Gold] ?? 0}}</span>
+      </div>
+    </div>
+  <!--  Clan  -->
+    <div fxLayout="column">
+      <span><b>Clan</b>:</span>
+      <div style="padding-left: 10px;">
+        <span>Clan Coins: {{allResources.basic[basicInventoryEnum.AllianceCoin] | number}}</span>
+      </div>
+      <div style="padding-left: 10px;">
+        <span>Demon King Keys: {{allResources.basic[basicInventoryEnum.AllianceBossKey] | number}}</span>
+      </div>
+      <div style="padding-left: 10px;">
+        <span>Hydra Keys: {{allResources.basic[basicInventoryEnum.AllianceHydraKey] | number}}</span>
+      </div>
+    </div>
+<!--    Faction Wars  -->
+    <div fxLayout="column">
+      <span><b>Faction Wars</b>:</span>
+      <ng-container *ngFor="let faction of activeFactions">
+        <div *ngIf="allResources.basic[faction.RTK_FactionKey] > 0" style="padding-left: 10px;">
+          {{faction.Name}} Keys: {{allResources.basic[faction.RTK_FactionKey]}}
+        </div>
+      </ng-container>
+      <div>
+        <b>Iron Twins Keys</b>: {{allResources.basic[basicInventoryEnum.DoubleAscend_FortressKey]}}
+      </div>
+      <div>
+        <b>Life Tokens</b>: {{allResources.basic[basicInventoryEnum.LifeToken]}}
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="20px">
+    <div fxLayout="row">
+      <div fxLayout="column">
+        <span><b>Potions</b>:</span>
+        <span style="padding-left: 10px;">Magic:</span>
+        <div style="padding-left: 20px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_MagicLow] | number) ?? 0}}</div>
+        <div style="padding-left: 20px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_MagicMid] | number) ?? 0}}</div>
+        <div style="padding-left: 20px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_MagicHigh] | number) ?? 0}}</div>
+      </div>
+      <div fxLayout="column" style="padding-left: 10px; padding-top:20px;">
+        <span>Spirit:</span>
+        <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_SpiritLow] | number) ?? 0}}</div>
+        <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_SpiritMid] | number) ?? 0}}</div>
+        <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_SpiritHigh] | number) ?? 0}}</div>
+      </div>
+      <div fxLayout="column" style="padding-left: 10px; padding-top:20px;">
+        <span>Force:</span>
+        <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_ForceLow] | number) ?? 0}}</div>
+        <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_ForceMid] | number) ?? 0}}</div>
+        <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_ForceHigh] | number) ?? 0}}</div>
+      </div>
+      <div fxLayout="column" style="padding-left: 10px; padding-top:20px;">
+        <span>Arcane:</span>
+        <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_ArcaneLow] | number) ?? 0}}</div>
+        <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_ArcaneMid] | number) ?? 0}}</div>
+        <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_ArcaneHigh] | number) ?? 0}}</div>
+      </div>
+      <div fxLayout="column" style="padding-left: 10px; padding-top:20px;">
+        <span>Void:</span>
+        <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_VoidLow] | number) ?? 0}}</div>
+        <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_VoidMid] | number) ?? 0}}</div>
+        <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_VoidHigh] | number) ?? 0}}</div>
+      </div>
+    </div>
+  </div>
+</mat-card>

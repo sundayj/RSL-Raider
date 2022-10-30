@@ -10,6 +10,6 @@ export enum ShardType {
   Mystery = "Mystery",
   Ancient = "Ancient",
   Void = "Void",
-  Sacred = "Sacred",
+  // Sacred = "Sacred",
   Legendary = "Legendary"
 }

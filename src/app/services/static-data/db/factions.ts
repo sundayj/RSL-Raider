@@ -6,6 +6,7 @@
  * @property {string} Name
  * @property {string} FactionGroupId - Foreign Key to `FactionGroups`
  * @property {string} RTK_Name - The name of the faction as used in the `Raid Toolkit` api.
+ * @property {string} RTK_FactionKey - The key for the faction's keys in the basic resources object
  * @property {boolean} Active - An Int in the SQLite3 database. 1 = True and 0 = False. Some factions aren't visible in the game yet.
  */
 export interface IFactionEntity {
@@ -13,6 +14,7 @@ export interface IFactionEntity {
   Name: string;
   FactionGroupId: number;
   RTK_Name: string;
+  RTK_FactionKey: string;
   Active: boolean;
 }
 
@@ -21,13 +23,19 @@ export class FactionEntity implements IFactionEntity {
   Name: string;
   FactionGroupId: number;
   RTK_Name: string;
+  RTK_FactionKey: string
   Active: boolean;
 
-  constructor(id = 0, name = '', factionGroupId = 0, rtkName = '', active = 0) {
+  constructor(
+    id = 0, name = '', factionGroupId = 0,
+    rtkName = '', rtkFactionKey = '',
+    active = 0
+  ) {
     this.Id = id;
     this.Name = name;
     this.FactionGroupId = factionGroupId;
     this.RTK_Name = rtkName;
+    this.RTK_FactionKey = rtkFactionKey;
     this.Active = active === 1;
   }
 }
@@ -39,6 +47,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Banner Lords",
 		"FactionGroupId" : 6,
 		"RTK_Name" : "BannerLords",
+    "RTK_FactionKey": "FractionWarKey_BannerLords",
 		"Active" : true
 	},
 	{
@@ -46,6 +55,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Barbarians",
 		"FactionGroupId" : 6,
 		"RTK_Name" : "Barbarians",
+    "RTK_FactionKey": "FractionWarKey_Barbarians",
 		"Active" : true
 	},
 	{
@@ -53,6 +63,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "High Elves",
 		"FactionGroupId" : 6,
 		"RTK_Name" : "HighElves",
+    "RTK_FactionKey": "FractionWarKey_HighElves",
 		"Active" : true
 	},
 	{
@@ -60,6 +71,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Sacred Order",
 		"FactionGroupId" : 6,
 		"RTK_Name" : "SacredOrder",
+    "RTK_FactionKey": "FractionWarKey_SacredOrder",
 		"Active" : true
 	},
 	{
@@ -67,6 +79,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Ogryn Tribes",
 		"FactionGroupId" : 7,
 		"RTK_Name" : "OgrynTribes",
+    "RTK_FactionKey": "FractionWarKey_OgrynTribes",
 		"Active" : true
 	},
 	{
@@ -74,6 +87,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Lizardmen",
 		"FactionGroupId" : 7,
 		"RTK_Name" : "LizardMen",
+    "RTK_FactionKey": "FractionWarKey_LizardMen",
 		"Active" : true
 	},
 	{
@@ -81,6 +95,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Skinwalkers",
 		"FactionGroupId" : 7,
 		"RTK_Name" : "Skinwalkers",
+    "RTK_FactionKey": "FractionWarKey_Skinwalkers",
 		"Active" : true
 	},
 	{
@@ -88,6 +103,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Orcs",
 		"FactionGroupId" : 7,
 		"RTK_Name" : "Orcs",
+    "RTK_FactionKey": "FractionWarKey_Orcs",
 		"Active" : true
 	},
 	{
@@ -95,6 +111,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Demonspawn",
 		"FactionGroupId" : 8,
 		"RTK_Name" : "Demonspawn",
+    "RTK_FactionKey": "FractionWarKey_Demonspawn",
 		"Active" : true
 	},
 	{
@@ -102,6 +119,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Undead Hordes",
 		"FactionGroupId" : 8,
 		"RTK_Name" : "UndeadHordes",
+    "RTK_FactionKey": "FractionWarKey_UndeadHordes",
 		"Active" : true
 	},
 	{
@@ -109,6 +127,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Dark Elves",
 		"FactionGroupId" : 8,
 		"RTK_Name" : "DarkElves",
+    "RTK_FactionKey": "FractionWarKey_DarkElves",
 		"Active" : true
 	},
 	{
@@ -116,6 +135,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Knights Revenant",
 		"FactionGroupId" : 8,
 		"RTK_Name" : "KnightsRevenant",
+    "RTK_FactionKey": "FractionWarKey_KnightsRevenant",
 		"Active" : true
 	},
 	{
@@ -123,6 +143,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Dwarves",
 		"FactionGroupId" : 9,
 		"RTK_Name" : "Dwarves",
+    "RTK_FactionKey": "FractionWarKey_Dwarves",
 		"Active" : true
 	},
 	{
@@ -130,6 +151,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Shadowkin",
 		"FactionGroupId" : 9,
 		"RTK_Name" : "Samurai",
+    "RTK_FactionKey": "FractionWarKey_Samurai",
 		"Active" : true
 	},
 	{
@@ -137,6 +159,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Unknown",
 		"FactionGroupId" : 5,
 		"RTK_Name" : "Unknown",
+    "RTK_FactionKey": "FractionWarKey_Unknown",
 		"Active" : false
 	},
 	{
@@ -144,6 +167,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Coven of Magi",
 		"FactionGroupId" : 5,
 		"RTK_Name" : "CovenOfMagi",
+    "RTK_FactionKey": "FractionWarKey_CovenOfMagi",
 		"Active" : false
 	},
 	{
@@ -151,6 +175,7 @@ export const Factions: IFactionEntity[] = [
 		"Name" : "Sylvan Watchers",
 		"FactionGroupId" : 9,
 		"RTK_Name" : "NyresanElves",
+    "RTK_FactionKey": "FractionWarKey_NyresanElves",
 		"Active" : true
 	}
 ];

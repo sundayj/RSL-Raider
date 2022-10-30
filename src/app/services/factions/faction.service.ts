@@ -21,4 +21,8 @@ export class FactionService {
 
     return factionsAndGroups;
   }
+
+  getAllActiveFactions(){
+    return this.allFactions.filter(f => f.Active);
+  }
 }

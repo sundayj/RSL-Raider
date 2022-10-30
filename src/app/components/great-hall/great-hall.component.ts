@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {IGreatHallModel} from '../../store/models/RaidCollection/great-hall.model';
 import {Affinity} from '@raid-toolkit/webclient';
-import {Affinity as AffinityEnum, StatKindId} from '@raid-toolkit/webclient/lib/Types/Enums';
+import {StatKindId} from '@raid-toolkit/webclient/lib/Types/Enums';
 
 @Component({
   selector: 'app-great-hall',
@@ -30,7 +30,7 @@ export class GreatHallComponent implements OnInit, OnChanges {
     StatKindId.Health.toLowerCase(),
     StatKindId.Accuracy.toLowerCase(),
     StatKindId.Resistance.toLowerCase(),
-    "criticalDamage"//StatKindId.CriticalDamage.toLowerCase()
+    "criticalDamage"
   ];
   dataSource: Affinity[] | undefined;
 

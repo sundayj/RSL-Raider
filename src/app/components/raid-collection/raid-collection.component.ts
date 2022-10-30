@@ -1,6 +1,8 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {InitRaidCollection, RaidCollection} from '../../store/models/RaidCollection/raid-collection.model';
-import {ShardType} from '../../store/enums/shard-type.enum';
+import {INIT_RAID_COLLECTION, RaidCollection} from '../../store/models/RaidCollection/raid-collection.model';
+import {INIT_GREAT_HALL} from '../../store/models/RaidCollection/great-hall.model';
+import {INIT_FACTION_GUARDIANS} from '../../store/models/RaidCollection/faction-guardians.model';
+import {IInventoryModel, INIT_INVENTORY} from '../../store/models/Inventory/inventory.model';
 
 @Component({
   selector: 'app-raid-collection',
@@ -10,8 +12,13 @@ import {ShardType} from '../../store/enums/shard-type.enum';
 export class RaidCollectionComponent implements OnInit, OnChanges {
 
   @Input()
-  raidCollection: RaidCollection = InitRaidCollection;
-  shardTypes = Object.keys(ShardType).map(st => st.toString());
+  raidCollection: RaidCollection = INIT_RAID_COLLECTION;
+  @Input()
+  allResources: IInventoryModel = INIT_INVENTORY;
+  @Input()
+  basicStats: {} | undefined;
+  initGreatHall = INIT_GREAT_HALL;
+  initFactionGuardians = INIT_FACTION_GUARDIANS;
 
   constructor() { }
 
@@ -22,10 +29,5 @@ export class RaidCollectionComponent implements OnInit, OnChanges {
     if (changes.raidCollection){
       this.raidCollection = changes.raidCollection.currentValue as RaidCollection;
     }
-  }
-
-  doShardsHaveShardType(shardType: string): boolean {
-    if (!shardType) {return false;}
-    return this.raidCollection.shards.hasOwnProperty(shardType);
   }
 }
