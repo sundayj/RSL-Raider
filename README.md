@@ -9,7 +9,9 @@
 ## Overview
 
 There are already some great tools out there for _Raid Shadow Legends_, but none of
-them give me all the features I want, so I'm trying to provide with _RSL Raider_! 
+them give me all the features I want, so I'm trying to provide with _RSL Raider_!
+
+![Screenshot 20221029](https://github.com/sundayj/RSL-Raider/blob/main/src/assets/screenshots/home-screenshot-2022-10-29.png?raw=true)
 
 ## Features
 
