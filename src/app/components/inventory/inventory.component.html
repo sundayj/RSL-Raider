@@ -2,17 +2,19 @@
   <mat-card-title fxLayoutAlign="center">
     Inventory
   </mat-card-title>
-  <div fxLayout="row" fxLayoutGap="20px">
+  <div fxLayout="row" class="inventory-row"  fxLayoutAlign="space-between">
     <!--  Main Resources  -->
     <div fxLayout="column">
-      <span><b>Champ Count</b>: {{heroCount | number}}</span>
       <span><b>Energy</b>: {{allResources.basic[basicInventoryEnum.Energy] | number}}</span>
       <span><b>Auto Battles</b>: {{allResources.basic[basicInventoryEnum.AutoBattleTicket] | number}}</span>
       <span><b>Gems</b>: {{allResources.basic[basicInventoryEnum.Gem] | number}}</span>
       <span><b>Silver</b>: {{allResources.basic[basicInventoryEnum.Silver] | number}}</span>
+      <span><b>Magisteel</b>: {{allResources.basic[basicInventoryEnum.Forge_Magisteel] | number}}</span>
+      <span><b>Corehammer</b>: {{allResources.basic[basicInventoryEnum.Forge_Corehammer] | number}}</span>
     </div>
     <!--  Shards  -->
     <div fxLayout="column">
+      <span><b>Champ Count</b>: {{heroCount | number}}</span>
       <span><b>Shards</b>:</span>
       <div *ngFor="let shardType of shardTypes">
         <div style="padding-left: 10px;">
@@ -39,7 +41,7 @@
     <div fxLayout="column">
       <span><b>Great Hall Medals</b>:</span>
       <div style="padding-left: 10px;">
-        <span>Bronze: {{allResources.basic[basicInventoryEnum.MedalL_Bronze] ?? 0}}</span>
+        <span>Bronze: {{allResources.basic[basicInventoryEnum.Medal_Bronze] ?? 0}}</span>
       </div>
       <div style="padding-left: 10px;">
         <span>Silver: {{allResources.basic[basicInventoryEnum.Medal_Silver] ?? 0}}</span>
@@ -50,6 +52,12 @@
     </div>
   <!--  Clan  -->
     <div fxLayout="column">
+      <div>
+        <b>Iron Twins Keys</b>: {{allResources.basic[basicInventoryEnum.DoubleAscend_FortressKey]}}
+      </div>
+      <div>
+        <b>Life Tokens</b>: {{allResources.basic[basicInventoryEnum.LifeToken]}}
+      </div>
       <span><b>Clan</b>:</span>
       <div style="padding-left: 10px;">
         <span>Clan Coins: {{allResources.basic[basicInventoryEnum.AllianceCoin] | number}}</span>
@@ -69,47 +77,139 @@
           {{faction.Name}} Keys: {{allResources.basic[faction.RTK_FactionKey]}}
         </div>
       </ng-container>
-      <div>
-        <b>Iron Twins Keys</b>: {{allResources.basic[basicInventoryEnum.DoubleAscend_FortressKey]}}
-      </div>
-      <div>
-        <b>Life Tokens</b>: {{allResources.basic[basicInventoryEnum.LifeToken]}}
-      </div>
+    </div>
+<!--    Soul Stones and Essences  -->
+    <div fxLayout="column">
+      <span><b>Soul Currency</b>:</span>
+      <div style="padding-left: 10px;">Mortal Soul Coin: {{(allResources.basic[basicInventoryEnum.DoubleAscend_MortalSoulCoin] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Immortal Soul Coin: {{(allResources.basic[basicInventoryEnum.DoubleAscend_ImmortalSoulCoin] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Eternal Soul Coin: {{(allResources.basic[basicInventoryEnum.DoubleAscend_EternalSoulCoin] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Immortal Soul Essence: {{(allResources.basic[basicInventoryEnum.DoubleAscend_ImmortalSoulEssence] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Eternal Soul Essence: {{(allResources.basic[basicInventoryEnum.DoubleAscend_EternalSoulEssence] | number) ?? 0}}</div>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutGap="20px">
-    <div fxLayout="row">
-      <div fxLayout="column">
-        <span><b>Potions</b>:</span>
-        <span style="padding-left: 10px;">Magic:</span>
-        <div style="padding-left: 20px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_MagicLow] | number) ?? 0}}</div>
-        <div style="padding-left: 20px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_MagicMid] | number) ?? 0}}</div>
-        <div style="padding-left: 20px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_MagicHigh] | number) ?? 0}}</div>
-      </div>
-      <div fxLayout="column" style="padding-left: 10px; padding-top:20px;">
-        <span>Spirit:</span>
-        <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_SpiritLow] | number) ?? 0}}</div>
-        <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_SpiritMid] | number) ?? 0}}</div>
-        <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_SpiritHigh] | number) ?? 0}}</div>
-      </div>
-      <div fxLayout="column" style="padding-left: 10px; padding-top:20px;">
-        <span>Force:</span>
-        <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_ForceLow] | number) ?? 0}}</div>
-        <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_ForceMid] | number) ?? 0}}</div>
-        <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_ForceHigh] | number) ?? 0}}</div>
-      </div>
-      <div fxLayout="column" style="padding-left: 10px; padding-top:20px;">
-        <span>Arcane:</span>
-        <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_ArcaneLow] | number) ?? 0}}</div>
-        <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_ArcaneMid] | number) ?? 0}}</div>
-        <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_ArcaneHigh] | number) ?? 0}}</div>
-      </div>
-      <div fxLayout="column" style="padding-left: 10px; padding-top:20px;">
-        <span>Void:</span>
-        <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_VoidLow] | number) ?? 0}}</div>
-        <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_VoidMid] | number) ?? 0}}</div>
-        <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_VoidHigh] | number) ?? 0}}</div>
-      </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" class="inventory-row"  fxLayoutAlign="space-between">
+<!--    Potions   -->
+    <div fxLayout="column">
+      <span><b>Potions</b>:</span>
+      <span>Magic:</span>
+      <div style="padding-left: 20px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_MagicLow] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_MagicMid] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_MagicHigh] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column" style="padding-top:20px;">
+      <span>Spirit:</span>
+      <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_SpiritLow] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_SpiritMid] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_SpiritHigh] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column" style="padding-top:20px;">
+      <span>Force:</span>
+      <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_ForceLow] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_ForceMid] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_ForceHigh] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column" style="padding-top:20px;">
+      <span>Arcane:</span>
+      <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_ArcaneLow] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_ArcaneMid] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_ArcaneHigh] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column" style="padding-top:20px;">
+      <span>Void:</span>
+      <div style="padding-left: 10px;">Small: {{(allResources.basic[basicInventoryEnum.Orb_VoidLow] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Medium: {{(allResources.basic[basicInventoryEnum.Orb_VoidMid] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Large: {{(allResources.basic[basicInventoryEnum.Orb_VoidHigh] | number) ?? 0}}</div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" class="inventory-row" fxLayoutAlign="space-between">
+<!--    Forge   -->
+    <div fxLayout="column">
+      <span><b>Forge</b>:</span>
+      <span>Blood Stones: (Deflection and Perception)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_BloodstoneRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_BloodstoneEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_BloodstoneLeg] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column" style="padding-top:20px;">
+      <span>Soul Stones: (Swift Parry and Resilience)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_SoulstoneLeg] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_SoulstoneRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_SoulstoneEpic] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column" style="padding-top:20px;">
+      <span>Nether Spider Eggs: (Affinitybreaker)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_NetherSpiderEggsRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_NetherSpiderEggsEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_NetherSpiderEggsLeg] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column" style="padding-top:20px;">
+      <span>Scarab Claws: (Untouchable)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_ScarabClawsRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_ScarabClawsEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_ScarabClawsLeg] | number) ?? 0}}</div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" class="inventory-row" fxLayoutAlign="space-between">
+    <div fxLayout="column">
+      <span>Magma Dragon Cores: (Fatal)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_MagmaDragonCoresRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_MagmaDragonCoresEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_MagmaDragonCoresLeg] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column">
+      <span>Frost Spider Spines: (Frostbite)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_FrostSpiderSpinesRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_FrostSpiderSpinesEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_FrostSpiderSpinesLeg] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column">
+      <span>Dragon Bones: (Bloodthirst)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_DragonBoneRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_DragonBoneEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_DragonBoneLeg] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column">
+      <span>Griffin Feathers: (Guardian)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_GriffinFeatherRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_GriffinFeatherEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_GriffinFeatherLeg] | number) ?? 0}}</div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxLayout="row" class="inventory-row" fxLayoutAlign="space-between">
+    <div fxLayout="column">
+      <span>Dreadhorn Plates: (Fortitude)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_DreadhornPlatesRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_DreadhornPlatesEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_DreadhornPlatesLeg] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column">
+      <span>Fae Spheres: (Lethal)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_FaeSpheresRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_FaeSpheresEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_FaeSpheresLeg] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column">
+      <span>Instinct Stones: (Instinct)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_InstinctStonesRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_InstinctStonesEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_InstinctStonesLeg] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column">
+      <span>Bolster Stones: (Bolster)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_BolsterStonesRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_BolsterStonesEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_BolsterStonesLeg] | number) ?? 0}}</div>
+    </div>
+    <div fxLayout="column">
+      <span>Defiant Stones: (Defiant)</span>
+      <div style="padding-left: 20px;">Rare: {{(allResources.basic[basicInventoryEnum.Forge_DefiantStonesRare] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Epic: {{(allResources.basic[basicInventoryEnum.Forge_DefiantStonesEpic] | number) ?? 0}}</div>
+      <div style="padding-left: 20px;">Legendary: {{(allResources.basic[basicInventoryEnum.Forge_DefiantStonesLeg] | number) ?? 0}}</div>
     </div>
   </div>
 </mat-card>
