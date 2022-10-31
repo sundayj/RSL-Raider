@@ -5,7 +5,7 @@ import {INIT_SHARDS} from './shard.model';
 
 export interface RaidCollection extends AccountDump {}
 
-export const InitRaidCollection: RaidCollection = {
+export const INIT_RAID_COLLECTION: RaidCollection = {
   arenaLeague: '',
   artifacts: [],
   factionGuardians: INIT_FACTION_GUARDIANS,
