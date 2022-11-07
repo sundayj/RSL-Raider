@@ -1,0 +1,9 @@
+<mat-form-field fxFill>
+  <mat-label>Search Champion by Name</mat-label>
+  <input matInput [formControl]="search">
+</mat-form-field>
+<ng-container *ngFor="let champ of $search | async">
+  <mat-card>
+    <mat-card-title>{{champ.name}}</mat-card-title>
+  </mat-card>
+</ng-container>

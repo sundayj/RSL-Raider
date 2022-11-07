@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {AccountDump} from '../../store/models/RaidCollection/account-dump.model';
-import {AccountInfo, IAccountApi, useRaidToolkitApi} from '@raid-toolkit/webclient';
+import {AccountInfo, IAccountApi, IStaticDataApi, useRaidToolkitApi} from '@raid-toolkit/webclient';
 import {INIT_RAID_COLLECTION, RaidCollection} from '../../store/models/RaidCollection/raid-collection.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {IChampion} from '../../store/models/Champions/champion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,11 +30,20 @@ export class RaidToolkitService {
     this._allResources = value;
   }
 
+  get userChamps(){
+    return <IChampion[]>this._userChamps;
+  }
+  set userChamps(data: IChampion[]){
+    this._userChamps = data.filter(c => !c.deleted);
+  }
+
   accountApi: IAccountApi = useRaidToolkitApi(IAccountApi);
+  staticDataApi: IStaticDataApi = useRaidToolkitApi(IStaticDataApi);
 
   private _account: AccountInfo | unknown;
   private _accountDump: AccountDump = INIT_RAID_COLLECTION;
   private _allResources: any | undefined;
+  private _userChamps: IChampion[] | undefined;
 
   constructor(private _snackBar: MatSnackBar) {
     this.setup();
@@ -53,5 +63,11 @@ export class RaidToolkitService {
     if (!this.account?.id){ return;}
     this.accountDump = (await this.accountApi.getAccountDump(this.account.id)) as RaidCollection;
     this.resources = (await this.accountApi.getAllResources(this.account.id));
+    this.getUserChamps();
+  }
+
+  async getUserChamps(){
+    if (!this.account?.id){return;}
+    this.userChamps = (await this.accountApi.getHeroes(this.account.id)) as IChampion[];
   }
 }

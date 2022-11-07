@@ -13,16 +13,29 @@
       <div class="header-account-text"><b>Data Version</b>: {{raidCollection.fileVersion}}</div>
     </div>
   </ng-container>
+
 </mat-toolbar>
-
-<div *ngIf="loading === false && raidCollection !== undefined">
-  <app-raid-collection
-    [raidCollection]="raidCollection"
-    [allResources]="allResources"
-  ></app-raid-collection>
-</div>
-
 <div *ngIf="loading === true">
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
-<router-outlet></router-outlet>
+<nav mat-tab-nav-bar [tabPanel]="tabPanel" class="nav-tabs">
+  <a mat-tab-link *ngFor="let link of links"
+     (click)="activeLink = link"
+     [active]="activeLink == link"
+  > {{link}} </a>
+
+</nav>
+
+<mat-tab-nav-panel #tabPanel>
+<div *ngIf="loading === false && raidCollection !== undefined">
+  <ng-container *ngIf="activeLink === 'Inventory'">
+    <app-raid-collection
+      [raidCollection]="raidCollection"
+      [allResources]="allResources"
+    ></app-raid-collection>
+  </ng-container>
+  <ng-container *ngIf="activeLink === 'Champions'">
+    <app-champ-collection [userChamps]="userChamps"></app-champ-collection>
+  </ng-container>
+</div>
+</mat-tab-nav-panel>

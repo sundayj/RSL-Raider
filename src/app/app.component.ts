@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RaidToolkitService} from './services/raid-toolkit/raid-toolkit.service';
 import {RaidCollection} from './store/models/RaidCollection/raid-collection.model';
-import {INIT_GREAT_HALL} from './store/models/RaidCollection/great-hall.model';
-import {INIT_FACTION_GUARDIANS} from './store/models/RaidCollection/faction-guardians.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +14,15 @@ export class AppComponent implements OnInit{
   loading = true;
   raidCollection: RaidCollection | undefined;
   allResources: any | undefined;
+  userChamps: any | undefined;
+  links: string[] = ['Inventory', 'Champions']
+  activeLink: string = this.links[0];
 
 
-  constructor(private _raidToolKitService: RaidToolkitService) {
+  constructor(
+    private _raidToolKitService: RaidToolkitService,
+    private _router: Router
+  ) {
   }
 
   ngOnInit() {
@@ -36,11 +41,10 @@ export class AppComponent implements OnInit{
       if (isLoaded){return;}
       this.raidCollection = this._raidToolKitService.accountDump;
       this.allResources = this._raidToolKitService.resources;
+      this.userChamps = this._raidToolKitService.userChamps;
       this.loading = false;
       loaded = true;
     }, 3000, loaded)
-
-    console.info(this.allResources);
-
   }
+
 }

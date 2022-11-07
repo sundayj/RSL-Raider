@@ -36,6 +36,14 @@ import {RouterOutlet, RouterModule} from '@angular/router';
 import { ChampCollectionComponent } from './components/champ-collection/champ-collection.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTabsModule} from '@angular/material/tabs';
+import {AppRoutingModule} from './app-routing.module';
+import {MatListModule} from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { ChampListComponent } from './components/champ-collection/champ-list/champ-list.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -51,10 +59,12 @@ import {MatDividerModule} from '@angular/material/divider';
     ArtifactComponent,
     AffinityComponent,
     ChampCollectionComponent,
-    InventoryComponent
+    InventoryComponent,
+    ChampListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
+    AppRoutingModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
@@ -81,8 +91,13 @@ import {MatDividerModule} from '@angular/material/divider';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     RouterOutlet,
-    RouterModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTabsModule,
+    MatListModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

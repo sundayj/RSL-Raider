@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-title fxLayoutAlign="center">
+    Your Champions
+  </mat-card-title>
+  <mat-card-content>
+    <div>
+      <h3><b>Filters</b></h3>
+      <mat-selection-list
+         (selectionChange)="selectionChange($event)"
+      >
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Factions
+            </mat-panel-title>
+            <mat-panel-description>
+              Filter by faction
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <mat-list-option
+            *ngFor="let faction of factions" [value]="faction.RTK_Name"
+          >
+            {{faction.Name}}
+          </mat-list-option>
+        </mat-expansion-panel>
+      </mat-selection-list>
+    </div>
+    <app-champ-list [champList]="filteredChamps"></app-champ-list>
+  </mat-card-content>
+</mat-card>

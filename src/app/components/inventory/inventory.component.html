@@ -71,12 +71,16 @@
     </div>
 <!--    Faction Wars  -->
     <div fxLayout="column">
-      <span><b>Faction Wars</b>:</span>
+      <span><b>Faction Wars</b>: <span *ngIf="factionKeysEmpty">0</span></span>
       <ng-container *ngFor="let faction of activeFactions">
         <div *ngIf="allResources.basic[faction.RTK_FactionKey] > 0" style="padding-left: 10px;">
           {{faction.Name}} Keys: {{allResources.basic[faction.RTK_FactionKey]}}
         </div>
       </ng-container>
+<!--      Doom Tower    -->
+      <span><b>Doom Tower</b>:</span>
+      <div style="padding-left: 10px;">Gold Keys: {{(allResources.basic[basicInventoryEnum.DoomTowerGoldKey] | number) ?? 0}}</div>
+      <div style="padding-left: 10px;">Silver Keys: {{(allResources.basic[basicInventoryEnum.DoomTowerSilverKey] | number) ?? 0}}</div>
     </div>
 <!--    Soul Stones and Essences  -->
     <div fxLayout="column">
